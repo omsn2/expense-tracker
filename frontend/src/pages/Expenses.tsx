@@ -136,23 +136,23 @@ export default function Expenses() {
         <div className="grid sm:grid-cols-2 gap-4">
           <div className="bg-white p-4 rounded-lg shadow-sm">
             <h3 className="text-lg font-medium mb-2">Today</h3>
-            <p className="text-2xl font-bold text-blue-600">${stats.today.total.toFixed(2)}</p>
+            <p className="text-2xl font-bold text-blue-600">₹{stats.today.total.toFixed(2)}</p>
             <p className="text-sm text-gray-500">{stats.today.count} expenses</p>
             {Object.entries(stats.today.byCategory).map(([category, amount]) => (
               <div key={category} className="mt-2 flex justify-between text-sm">
                 <span className="text-gray-600">{category}</span>
-                <span className="font-medium">${amount.toFixed(2)}</span>
+                <span className="font-medium">₹{amount.toFixed(2)}</span>
               </div>
             ))}
           </div>
           <div className="bg-white p-4 rounded-lg shadow-sm">
             <h3 className="text-lg font-medium mb-2">This Month</h3>
-            <p className="text-2xl font-bold text-green-600">${stats.thisMonth.total.toFixed(2)}</p>
+            <p className="text-2xl font-bold text-green-600">₹{stats.thisMonth.total.toFixed(2)}</p>
             <p className="text-sm text-gray-500">{stats.thisMonth.count} expenses</p>
             {Object.entries(stats.thisMonth.byCategory).map(([category, amount]) => (
               <div key={category} className="mt-2 flex justify-between text-sm">
                 <span className="text-gray-600">{category}</span>
-                <span className="font-medium">${amount.toFixed(2)}</span>
+                <span className="font-medium">₹{amount.toFixed(2)}</span>
               </div>
             ))}
           </div>
@@ -278,7 +278,7 @@ export default function Expenses() {
                   {format(new Date(expense.date), 'MMM d, yyyy')}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  ${expense.amount.toFixed(2)}
+                  ₹{expense.amount.toFixed(2)}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {expense.category}

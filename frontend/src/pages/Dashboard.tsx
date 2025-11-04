@@ -61,13 +61,13 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="bg-white p-4 rounded-lg shadow-sm">
           <div className="text-sm text-gray-500">Today</div>
-          <div className="text-2xl font-bold text-blue-600">${(stats?.today?.total || 0).toFixed(2)}</div>
+          <div className="text-2xl font-bold text-blue-600">₹{(stats?.today?.total || 0).toFixed(2)}</div>
           <div className="text-xs text-gray-500">{stats?.today?.count || 0} expenses</div>
         </div>
 
         <div className="bg-white p-4 rounded-lg shadow-sm">
           <div className="text-sm text-gray-500">This month</div>
-          <div className="text-2xl font-bold text-green-600">${(stats?.thisMonth?.total || 0).toFixed(2)}</div>
+          <div className="text-2xl font-bold text-green-600">₹{(stats?.thisMonth?.total || 0).toFixed(2)}</div>
           <div className="text-xs text-gray-500">{stats?.thisMonth?.count || 0} expenses</div>
         </div>
 
@@ -109,7 +109,7 @@ export default function Dashboard() {
               {recentExpenses.length === 0 ? <div className="text-sm text-gray-500">No recent expenses</div> : recentExpenses.map(e => (
                 <div key={e.id} className="flex justify-between text-sm">
                   <div className="text-gray-700">{e.category} {e.note ? `— ${e.note}` : ''}</div>
-                  <div className="font-medium">${e.amount.toFixed(2)}</div>
+                  <div className="font-medium">₹{e.amount.toFixed(2)}</div>
                 </div>
               ))}
             </div>

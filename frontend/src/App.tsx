@@ -55,7 +55,7 @@ export default function App() {
         </div>
         <div className="mt-3">
           {expenses.length === 0 ? <div>No expenses yet</div> : expenses.map(e => (
-            <div key={e.id} className="text-sm">${e.amount} — {e.category} — {new Date(e.date).toLocaleString()} {e.note ? ' — ' + e.note : ''}</div>
+            <div key={e.id} className="text-sm">₹{e.amount} — {e.category} — {new Date(e.date).toLocaleString()} {e.note ? ' — ' + e.note : ''}</div>
           ))}
         </div>
       </section>

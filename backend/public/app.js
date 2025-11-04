@@ -7,7 +7,7 @@ async function fetchJSON(url, opts) {
 async function loadExpenses() {
   const list = document.getElementById('expenses');
   const expenses = await fetchJSON('/api/expenses');
-  list.innerHTML = expenses.map(e => `<div>$${e.amount} — ${e.category} — ${new Date(e.date).toLocaleString()} ${e.note ? ' — ' + e.note : ''}</div>`).join('');
+  list.innerHTML = expenses.map(e => `<div>₹${e.amount} — ${e.category} — ${new Date(e.date).toLocaleString()} ${e.note ? ' — ' + e.note : ''}</div>`).join('');
 }
 
 async function loadTodos() {
