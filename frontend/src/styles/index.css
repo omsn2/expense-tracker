@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="date"] {
+    @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500;
+  }
+
+  button {
+    @apply inline-flex items-center justify-center;
+  }
+}
