@@ -1,43 +1,71 @@
-Expense & Todo Tracker — MVP
+# Expense & Todo Tracker — MVP
 
 This repository contains a small single-user MVP for tracking daily expenses and todos.
 
-Stack (MVP):
- Backend: Node.js + Express + TypeScript + Prisma + SQLite
-- Frontend: Vite + React + TypeScript + Tailwind (see `frontend/`)
-- Persistence: SQLite via Prisma (dev DB file `backend/dev.db`)
+## Stack
 
-Quick start (Windows PowerShell):
+- **Backend**: Node.js + Express + TypeScript + Prisma + SQLite
+- **Frontend**: Vite + React + TypeScript + Tailwind CSS
+- **Persistence**: SQLite via Prisma (development database file located at `backend/dev.db`)
 
-1. Open a terminal and go to the backend folder:
+## Quick Start
 
-```powershell
-cd d:/FInance/expense-tracker/backend
-```
+### Backend Setup
 
-2. Install dependencies:
+1. **Navigate to the backend directory**:
 
-```powershell
-npm install
-# generate prisma client and apply migrations (first run)
-npx prisma generate
-npx prisma migrate dev --name init
-```
+   ```powershell
+   cd d:/Finance/expense-tracker/backend
+   ```
+2. **Install dependencies**:
 
-3. Start dev server:
+   ```powershell
+   npm install
+   ```
+3. **Generate Prisma client and apply migrations** (first run):
 
-```powershell
-npm run dev
-```
+   ```powershell
+   npx prisma generate
+   npx prisma migrate dev --name init
+   ```
+4. **Start the development server**:
 
-4. Open http://localhost:4000 in a browser.
+   ```powershell
+   npm run dev
+   ```
+5. **Access the backend**:
 
-Notes & next steps:
-- This is a minimal scaffold to get an end-to-end experience quickly. It uses a JSON file for persistence so you can run the app without installing a database.
-- Next improvements I can implement on request:
-  - Replace local JSON with SQLite + Prisma
-  - Create a React + TypeScript frontend (Vite + Tailwind)
-  - Add authentication and multi-user support
-  - Add CSV import/export, recurring transactions, tagging and reports
+   Open [http://localhost:4000](http://localhost:4000) in your browser.
 
-If you'd like me to proceed with switching to the full stack (Prisma + React+TS), say so and I'll migrate the scaffold and add tests and CI.
+### Frontend Setup
+
+1. **Navigate to the frontend directory**:
+
+   ```powershell
+   cd d:/Finance/expense-tracker/frontend
+   ```
+2. **Install dependencies**:
+
+   ```powershell
+   npm install
+   ```
+3. **Start the development server**:
+
+   ```powershell
+   npm run dev
+   ```
+4. **Access the frontend**:
+
+   Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Notes & Next Steps
+
+- This project provides a minimal scaffold to get an end-to-end experience quickly.
+- The backend uses SQLite for persistence, managed via Prisma.
+- The frontend is built with React and styled using Tailwind CSS.
+- Future improvements could include:
+  - Adding authentication and multi-user support
+  - Implementing CSV import/export, recurring transactions, tagging, and reports
+  - Enhancing the UI/UX with additional features
+
+If you'd like to proceed with any specific improvements or need further assistance, feel free to reach out!
