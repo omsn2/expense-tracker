@@ -22,3 +22,46 @@ model Todo {
   done      Boolean  @default(false)
   createdAt DateTime @default(now())
 }
+
+model Budget {
+  id             Int      @id @default(autoincrement())
+  category       String   // Category name or "overall" for total budget
+  amount         Float    // Budget limit amount
+  period         String   @default("monthly") // "monthly" or "yearly"
+  year           Int?     // Specific year (null for recurring)
+  month          Int?     // Specific month 1-12 (null for yearly or recurring monthly)
+  alertThreshold Float    @default(80) // Alert when spending reaches this % (e.g., 80 = 80%)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@unique([category, period, year, month])
+}
+
+model RecurringExpense {
+  id              Int      @id @default(autoincrement())
+  name            String   // Name/description (e.g., "Netflix Subscription", "Rent")
+  amount          Float    // Amount for each occurrence
+  category        String   @default("uncategorized")
+  frequency       String   // "daily", "weekly", "monthly", "yearly"
+  dayOfMonth      Int?     // For monthly: 1-31 (day of month to create)
+  dayOfWeek       Int?     // For weekly: 0-6 (0=Sunday)
+  startDate       DateTime // When to start creating expenses
+  endDate         DateTime? // Optional end date (null = indefinite)
+  lastGenerated   DateTime? // Last time an expense was auto-generated
+  nextOccurrence  DateTime // Next scheduled occurrence
+  isActive        Boolean  @default(true) // Can be paused/resumed
+  autoGenerate    Boolean  @default(true) // Auto-create expenses or just remind
+  note            String?  // Optional notes
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Income {
+  id        Int      @id @default(autoincrement())
+  amount    Float    // Income amount
+  source    String   // Source of income (e.g., "Salary", "Freelance", "Investment")
+  category  String   @default("salary") // Category: salary, freelance, investment, gift, other
+  note      String?  // Optional notes
+  date      DateTime // Date received
+  createdAt DateTime @default(now())
+}
