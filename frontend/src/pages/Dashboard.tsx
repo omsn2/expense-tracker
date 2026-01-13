@@ -3,18 +3,11 @@ import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 import { HiExclamation } from 'react-icons/hi';
+import { apiUrl } from '../utils/api';
 
-type Expense = { id: number; amount: number; category: string; note?: string; date: string };
-type Todo = { id: number; title: string; done: boolean; createdAt: string };
-type BudgetAlert = {
-  id: number;
-  category: string;
-  amount: number;
-  spent: number;
-  percentage: number;
-  isOverBudget: boolean;
-  isNearLimit: boolean;
-};
+type Expense = { id: number; amount: number; category: string; note: string; date: string };
+type Todo = { id: number; text: string; done: boolean; dueDate: string | null };
+type BudgetAlert = { category: string; message: string; severity: 'warning' | 'danger' };
 
 export default function Dashboard() {
   const [expenses, setExpenses] = useState<Expense[]>([]);
@@ -27,12 +20,12 @@ export default function Dashboard() {
   const loadAll = useCallback(async () => {
     try {
       const [expRes, todoRes, statsRes, budgetRes, recurringRes, cashFlowRes] = await Promise.all([
-        fetch('/api/expenses?limit=1000'),
-        fetch('/api/todos'),
-        fetch('/api/expenses/stats'),
-        fetch('/api/budgets/status'),
-        fetch('/api/recurring-expenses/upcoming'),
-        fetch('/api/cashflow')
+        fetch(apiUrl('/api/expenses?limit=1000')),
+        fetch(apiUrl('/api/todos')),
+        fetch(apiUrl('/api/expenses/stats')),
+        fetch(apiUrl('/api/budgets/status')),
+        fetch(apiUrl('/api/recurring-expenses/upcoming')),
+        fetch(apiUrl('/api/cashflow'))
       ]);
       const [expData, todoData, statsData, budgetData, recurringData, cashFlowData] = await Promise.all([
         expRes.json(),

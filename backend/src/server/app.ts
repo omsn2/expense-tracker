@@ -8,6 +8,17 @@ export function createServer(): Express {
   const app = express();
   app.use(express.json());
 
+  // Enable CORS for all origins (for production, you might want to restrict this)
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    if (req.method === 'OPTIONS') {
+      return res.sendStatus(200);
+    }
+    next();
+  });
+
   // Get expenses (with optional year/month filtering)
   app.get('/api/expenses', async (req, res) => {
     const { year, month, limit = '50' } = req.query;

@@ -1,8 +1,7 @@
 {
-    "rewrites": [
-        {
-            "source": "/api/(.*)",
-            "destination": "https://expense-tracker-backend-rouge.vercel.app/api/$1"
+    "build": {
+        "env": {
+            "VITE_API_URL": "https://expense-tracker-backend-rouge.vercel.app"
         }
-    ]
+    }
 }
