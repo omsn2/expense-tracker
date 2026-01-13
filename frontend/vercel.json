@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+        {
+            "source": "/api/(.*)",
+            "destination": "https://expense-tracker-backend-rouge.vercel.app/api/$1"
+        }
+    ]
+}
